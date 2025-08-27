@@ -4,7 +4,8 @@ on:
   push:
     paths:
       - '*.html'  # Se ejecuta cuando subas o cambies cualquier HTML
-
+on:
+  workflow_dispatch:
 jobs:
   update-readme:
     runs-on: ubuntu-latest
