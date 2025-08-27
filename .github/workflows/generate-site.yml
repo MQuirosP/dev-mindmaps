@@ -1,32 +1,43 @@
-name: Update Mindmaps
+name: Generate site
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
   workflow_dispatch:
 
-permissions:
-  contents: write
-
 jobs:
-  build:
+  generate:
     runs-on: ubuntu-latest
-
     steps:
+      # 1️⃣ Clonar el repo
       - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          persist-credentials: true
 
-      - name: Generate files
+      # 2️⃣ Configurar Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+
+      # 3️⃣ Ejecutar script de generación
+      - name: Generate index.html and README.md
+        run: node generate-site.js
+
+      # 4️⃣ Mostrar archivos generados
+      - name: Show generated files
         run: |
-          # Aquí va tu script real de generación
-          echo "<html><body>Mapa generado</body></html>" > index.html
-          echo "# Dev Mindmaps" > README.md
+          echo "index.html exists?"
+          ls -l index.html || echo "Not found"
+          echo "README.md exists?"
+          ls -l README.md || echo "Not found"
 
+      # 5️⃣ Commit y push usando GITHUB_TOKEN
       - name: Commit and push changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: "Update index.html and README.md automatically"
-          add: "index.html README.md"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add index.html README.md
+          git commit -m "Update index.html and README.md automatically" || echo "Nothing to commit"
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
