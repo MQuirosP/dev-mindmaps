@@ -1,4 +1,4 @@
-name: Generate Mindmaps Index and Rename HTML Files
+name: Generate Mindmaps Index
 
 on:
   push:
@@ -12,34 +12,23 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Rename HTML files safely
+      - name: Generate index.html with full URLs
         run: |
-          find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
-            dir=$(dirname "$file")
-            base=$(basename "$file" .html)
-            # Minúsculas, reemplazar espacios por guiones, quitar caracteres problemáticos
-            safe=$(echo "$base" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g' | sed 's/[^a-z0-9\-]//g')
-            if [ "$base" != "$safe" ]; then
-              mv "$file" "$dir/$safe.html"
-            fi
-          done
-
-      - name: Generate index.html safely
-        run: |
+          BASE_URL="https://mquirosp.github.io/dev-mindmaps/"
           echo "<!DOCTYPE html>" > index.html
           echo "<html lang='es'><head><meta charset='UTF-8'><title>Dev Mindmaps</title></head><body><h1>Dev Mindmaps</h1><ul>" >> index.html
 
           find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
-            url=$(echo "$file" | sed 's|^\./||' | jq -sRr @uri)
+            file_path=$(echo "$file" | sed 's|^\./||' | jq -sRr @uri)
             name=$(basename "$file" .html)
-            echo "<li><a href='${url}'>${name}</a></li>" >> index.html
+            echo "<li><a href='${BASE_URL}${file_path}'>${name}</a></li>" >> index.html
           done
 
           echo "</ul></body></html>" >> index.html
 
-      - name: Commit and push changes
+      - name: Commit and push index.html
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           branch: main
-          commit_message: "docs: rename HTML files and update index.html"
+          commit_message: "docs: update index.html with full GitHub Pages URLs"
