@@ -23,7 +23,7 @@ jobs:
       - name: List files before generating
         run: ls -R
 
-      # 4️⃣ Ejecutar script
+      # 4️⃣ Ejecutar script de generación
       - name: Generate index.html and README.md
         run: node generate-site.js
 
@@ -39,13 +39,11 @@ jobs:
           echo "README.md exists?"
           ls -l README.md || echo "Not found"
 
-      # 7️⃣ Commit forzado de los archivos generados
+      # 7️⃣ Commit y push usando git directamente
       - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          author_name: github-actions
-          author_email: github-actions@github.com
-          message: "Update index.html and README.md automatically"
-          add: "index.html,README.md"
-          push: true
-          allow_empty_commit: true
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add index.html README.md
+          git commit -m "Update index.html and README.md automatically" || echo "Nothing to commit"
+          git push
