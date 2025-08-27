@@ -1,0 +1,41 @@
+name: Update README with Mindmap Links
+
+on:
+  push:
+    paths:
+      - '*.html'  # Se ejecuta cuando subas o cambies cualquier HTML
+
+jobs:
+  update-readme:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Clonar el repo
+      - uses: actions/checkout@v3
+
+      # Paso 2: Generar README.md automáticamente
+      - name: Generate README
+        run: |
+          repoBaseUrl='https://mquirosp.github.io/dev-mindmaps/'
+          echo "# Dev Mindmaps" > README.md
+          echo "" >> README.md
+          echo "Mind maps for frontend and backend development concepts." >> README.md
+          echo "Created with [Markmap](https://markmap.js.org/)." >> README.md
+          echo "" >> README.md
+          echo "## 🌐 Live Mindmaps" >> README.md
+          echo "" >> README.md
+          for f in *.html; do
+            name=$(basename "$f" .html)
+            echo "- [$name](${repoBaseUrl}$(echo $f | sed 's/ /%20/g'))" >> README.md
+          done
+          echo "" >> README.md
+          echo "---" >> README.md
+
+      # Paso 3: Commit y push del README actualizado
+      - name: Commit and Push
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add README.md
+          git commit -m "docs: update README with mindmap links" || echo "No changes to commit"
+          git push
