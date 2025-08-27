@@ -39,11 +39,13 @@ jobs:
           echo "README.md exists?"
           ls -l README.md || echo "Not found"
 
-      # 7️⃣ Commit y push usando git directamente
-      - name: Commit changes
+      # 7️⃣ Commit y push usando GITHUB_TOKEN para evitar 403
+      - name: Commit and push changes
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add index.html README.md
           git commit -m "Update index.html and README.md automatically" || echo "Nothing to commit"
-          git push
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
