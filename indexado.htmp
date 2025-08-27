@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Índice de Mapas Mentales</title>
+</head>
+<body>
+    <h1>Índice de Mapas Mentales</h1>
+    <ul>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Arquitectura%20Hexagonal.html">Arquitectura Hexagonal</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Arquitectura%20MCS.html">Arquitectura MCS</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Arquitectura%20Pos_System.html">Arquitectura Pos_System</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Arquitectura%20de%20software.html">Arquitectura de software</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Arquitecturas.html">Arquitecturas</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Autenticaci%C3%B3n%20con%20JWT.html">Autenticación con JWT</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Automatizar%20WSL%20y%20Docker%20en%20otras%20pc.html">Automatizar WSL y Docker en otras pc</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Backend%20configuration%20and%20workflow.html">Backend configuration and workflow</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/CORS%20y%20Seguridad%20en%20APIs.html">CORS y Seguridad en APIs</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/CRUD%20con%20MongoDB%20y%20Mongoose.html">CRUD con MongoDB y Mongoose</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Desarrollo%20de%20APIs%20RESTful.html">Desarrollo de APIs RESTful</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Desarrollo%20Front%20End.html">Desarrollo Front End</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Desarrollo%20Full%20Stack.html">Desarrollo Full Stack</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Desarrollo%20Mobile.html">Desarrollo Mobile</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Desarrollo%20Web.html">Desarrollo Web</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/DevOps.html">DevOps</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Express%20y%20Node%20JS.html">Express y Node JS</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Flujo%20de%20Trabajo%20de%20Desarrollo.html">Flujo de Trabajo de Desarrollo</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frameworks%20de%20Desarrollo.html">Frameworks de Desarrollo</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend.html">Frontend y Backend</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB.html">Frontend y Backend en Programación Tecnología WEB</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20Cmap.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - Cmap</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20Cmap%20-%20PDF.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - Cmap - PDF</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20PDF.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - PDF</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20PNG.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - PNG</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20SVG.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - SVG</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20Webp.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - Webp</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20Webp%20-%20PNG.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - Webp - PNG</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20Webp%20-%20SVG.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - Webp - SVG</a></li>
+        <li><a href="https://mquirosp.github.io/dev-mindmaps/Frontend%20y%20Backend%20en%20Programaci%C3%B3n%20Tecnolog%C3%ADa%20WEB%20-%20Fron-End%20y%20Back-End%20-%20Webp%20-%20Webp.html">Frontend y Backend en Programación Tecnología WEB - Fron-End y Back-End - Webp - Webp</a></li>
+        <a href="https://mquirosp.github.io/dev-mindmaps/">Volver al índice principal</a>
+    </ul>
+</body>
+</html>
