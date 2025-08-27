@@ -1,41 +1,44 @@
-name: Update README with Mindmap Links
+name: Generate Mindmaps Index
 
 on:
   push:
     paths:
-      - '*.html'
+      - '**/*.html'
   workflow_dispatch:
 
 jobs:
-  update-readme:
+  generate-index:
     runs-on: ubuntu-latest
 
     steps:
-      # Paso 1: Clonar el repo
+      # Clonar el repo
       - uses: actions/checkout@v3
 
-      # Paso 2: Generar README.md automáticamente
-      - name: Generate README
+      # Generar index.html
+      - name: Generate index.html
         run: |
-          repoBaseUrl='https://mquirosp.github.io/dev-mindmaps/'
-          echo "# Dev Mindmaps" > README.md
-          echo "" >> README.md
-          echo "Mind maps for frontend and backend development concepts." >> README.md
-          echo "Created with [Markmap](https://markmap.js.org/)." >> README.md
-          echo "" >> README.md
-          echo "## 🌐 Live Mindmaps" >> README.md
-          echo "" >> README.md
-          for f in *.html; do
-            name=$(basename "$f" .html)
-            echo "- [$name](${repoBaseUrl}$(echo $f | sed 's/ /%20/g'))" >> README.md
+          echo "<!DOCTYPE html>" > index.html
+          echo "<html lang='en'>" >> index.html
+          echo "<head><meta charset='UTF-8'><title>Dev Mindmaps</title></head>" >> index.html
+          echo "<body>" >> index.html
+          echo "<h1>Dev Mindmaps</h1>" >> index.html
+          echo "<p>Mind maps for frontend and backend development concepts.</p>" >> index.html
+          echo "<ul>" >> index.html
+          
+          # Recorrer todos los HTML en la raíz y subcarpetas
+          find . -name '*.html' ! -name 'index.html' | sort | while read file; do
+            url=$(echo "$file" | sed 's|^\./||' | sed 's/ /%20/g')
+            name=$(basename "$file" .html)
+            echo "<li><a href='${url}'>${name}</a></li>" >> index.html
           done
-          echo "" >> README.md
-          echo "---" >> README.md
+          
+          echo "</ul>" >> index.html
+          echo "</body></html>" >> index.html
 
-      # Paso 3: Commit y push usando acción externa que maneja el token
-      - name: Commit files
+      # Commit y push usando acción para evitar problemas de token
+      - name: Commit and Push
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          commit_message: "docs: update README with mindmap links"
+          commit_message: "docs: update index.html with all mindmaps"
