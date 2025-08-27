@@ -11,7 +11,7 @@ All mind maps are created with [Markmap](https://markmap.js.org/).
 
 All mind maps are listed dynamically on GitHub Pages:
 
-[📂 Open Mindmaps Index](https://mquirosp.github.io/dev-mindmaps/index.html)
+[📂 Open Mindmaps Index](https://mquirosp.github.io/dev-mindmaps/)
 
 > This page always shows the latest maps available in the repository.
 
