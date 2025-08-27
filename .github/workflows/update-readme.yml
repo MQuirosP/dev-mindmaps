@@ -9,12 +9,9 @@ on:
 jobs:
   generate-index:
     runs-on: ubuntu-latest
-
     steps:
-      # Clonar el repo
       - uses: actions/checkout@v3
 
-      # Generar index.html
       - name: Generate index.html
         run: |
           echo "<!DOCTYPE html>" > index.html
@@ -24,19 +21,18 @@ jobs:
           echo "<h1>Dev Mindmaps</h1>" >> index.html
           echo "<p>Mind maps for frontend and backend development concepts.</p>" >> index.html
           echo "<ul>" >> index.html
-          
-          # Recorrer todos los HTML en la raíz y subcarpetas
+
+          # Buscar todos los HTML, incluyendo subcarpetas, excepto index.html
           find . -name '*.html' ! -name 'index.html' | sort | while read file; do
             url=$(echo "$file" | sed 's|^\./||' | sed 's/ /%20/g')
             name=$(basename "$file" .html)
             echo "<li><a href='${url}'>${name}</a></li>" >> index.html
           done
-          
+
           echo "</ul>" >> index.html
           echo "</body></html>" >> index.html
 
-      # Commit y push usando acción para evitar problemas de token
-      - name: Commit and Push
+      - name: Commit and push index.html
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
