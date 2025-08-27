@@ -1,4 +1,4 @@
-name: Generate Mindmaps Index
+name: Generate Mindmaps Index and Rename Files
 
 on:
   push:
@@ -12,29 +12,46 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Rename HTML files to safe names
+        run: |
+          find . -name '*.html' ! -name 'index.html' | while read file; do
+            dir=$(dirname "$file")
+            base=$(basename "$file" .html)
+            # Reemplazar espacios por guiones, todo minúsculas, quitar caracteres problemáticos
+            safe=$(echo "$base" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g' | sed 's/[^a-z0-9\-]//g')
+            if [ "$base" != "$safe" ]; then
+              mv "$file" "$dir/$safe.html"
+            fi
+          done
+
       - name: Generate index.html
         run: |
           echo "<!DOCTYPE html>" > index.html
-          echo "<html lang='en'>" >> index.html
-          echo "<head><meta charset='UTF-8'><title>Dev Mindmaps</title></head>" >> index.html
-          echo "<body>" >> index.html
-          echo "<h1>Dev Mindmaps</h1>" >> index.html
-          echo "<p>Mind maps for frontend and backend development concepts.</p>" >> index.html
+          echo "<html lang='es'>" >> index.html
+          echo "<head><meta charset='UTF-8'><title>Dev Mindmaps</title>" >> index.html
+          echo "<style>
+          body { font-family: Arial, sans-serif; margin: 2rem; }
+          h1 { color: #2c3e50; }
+          ul { list-style: none; padding-left: 0; }
+          li { margin-bottom: 0.5rem; }
+          a { text-decoration: none; color: #3498db; }
+          a:hover { text-decoration: underline; }
+          </style></head>" >> index.html
+          echo "<body><h1>Dev Mindmaps</h1>" >> index.html
+          echo "<p>Mapas mentales para conceptos de desarrollo frontend y backend.</p>" >> index.html
           echo "<ul>" >> index.html
 
-          # Buscar todos los HTML, incluyendo subcarpetas, excepto index.html
           find . -name '*.html' ! -name 'index.html' | sort | while read file; do
-            url=$(echo "$file" | sed 's|^\./||' | sed 's/ /%20/g')
+            url=$(echo "$file" | sed 's|^\./||')
             name=$(basename "$file" .html)
             echo "<li><a href='${url}'>${name}</a></li>" >> index.html
           done
 
-          echo "</ul>" >> index.html
-          echo "</body></html>" >> index.html
+          echo "</ul></body></html>" >> index.html
 
-      - name: Commit and push index.html
+      - name: Commit and push index.html and renamed files
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           branch: main
-          commit_message: "docs: update index.html with all mindmaps"
+          commit_message: "docs: rename HTML files and update index.html"
