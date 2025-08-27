@@ -9,17 +9,29 @@ jobs:
   generate:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ Clona el repo
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      # 2️⃣ Configura Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
           node-version: "20"
 
+      # 3️⃣ Debug: listar archivos antes de ejecutar
+      - name: List files before generating
+        run: ls -R
+
+      # 4️⃣ Ejecuta el script que genera index.html y README.md
       - name: Generate index.html and README.md
         run: node generate-site.js
 
+      # 5️⃣ Debug: listar archivos después de generar
+      - name: List files after generating
+        run: ls -R
+
+      # 6️⃣ Commit automático de los archivos generados
       - name: Commit changes
         uses: EndBug/add-and-commit@v9
         with:
