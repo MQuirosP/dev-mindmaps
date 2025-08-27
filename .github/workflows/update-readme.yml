@@ -1,85 +1,33 @@
-name: Update README and Index via PR
+name: Generate Index HTML
 
 on:
   push:
-    paths:
-      - '**/*.html'
-      - 'Generate-readme.js'
+    branches: ["main"]
   workflow_dispatch:
 
 jobs:
-  generate-and-pr:
+  generate-index:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Clonar el repo
-      - uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      # 2️⃣ Configurar Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "20"
 
-      # 3️⃣ Generar README.md
-      - name: Generate README.md
-        run: node Generate-readme.js
+      - name: Install dependencies
+        run: npm install
 
-      # 4️⃣ Generar index.html
       - name: Generate index.html
-        run: |
-          BASE_URL="https://mquirosp.github.io/dev-mindmaps/"
-          echo "<!DOCTYPE html>" > index.html
-          echo "<html lang='es'>" >> index.html
-          echo "<head><meta charset='UTF-8'><title>Dev Mindmaps</title>
-          <style>
-            body { font-family: Arial, sans-serif; margin: 2rem; }
-            h1 { color: #2c3e50; }
-            ul { list-style: none; padding-left: 0; }
-            li { margin-bottom: 0.5rem; }
-            a { text-decoration: none; color: #3498db; }
-            a:hover { text-decoration: underline; }
-          </style>
-          </head>" >> index.html
-          echo "<body><h1>Dev Mindmaps</h1><ul>" >> index.html
+        run: node Generate-index.js
 
-          find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
-            file_path=$(echo "$file" | sed 's|^\./||' | jq -sRr @uri)
-            name=$(basename "$file" .html)
-            echo "<li><a href='${BASE_URL}${file_path}'>${name}</a></li>" >> index.html
-          done
-
-          echo "</ul></body></html>" >> index.html
-
-      # 5️⃣ Configurar Git
-      - name: Configure Git
-        run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-
-      # 6️⃣ Crear rama temporal y hacer commit
-      - name: Commit changes
-        run: |
-          BRANCH_NAME="update-mindmaps"
-          git checkout -b $BRANCH_NAME
-          git add README.md index.html
-          git commit -m "docs: update README.md and index.html with mindmap links" || echo "No changes to commit"
-
-      # 7️⃣ Push a la rama temporal usando PAT
-      - name: Push branch
-        run: git push --set-upstream origin update-mindmaps --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.PERSONAL_TOKEN }}
-
-      # 8️⃣ Crear pull request automáticamente
-      - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v5
+      - name: Commit and push index.html
+        uses: EndBug/add-and-commit@v9
         with:
-          token: ${{ secrets.PERSONAL_TOKEN }}
-          commit-message: "docs: update README.md and index.html"
-          branch: update-mindmaps
-          base: main
-          title: "Update README.md and index.html with mindmap links"
-          body: "This PR updates README.md and index.html with all current HTML mindmaps."
-          draft: false
+          author_name: github-actions
+          author_email: github-actions@github.com
+          message: "Update index.html automatically"
+          add: "index.html"
+          push: true
