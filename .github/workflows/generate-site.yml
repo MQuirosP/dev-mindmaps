@@ -23,7 +23,7 @@ jobs:
       - name: Generate index.html and README.md
         run: node generate-site.js
 
-      # 4️⃣ Verificar archivos generados
+      # 4️⃣ Mostrar archivos generados
       - name: Show generated files
         run: |
           echo "index.html exists?"
