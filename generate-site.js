@@ -1,13 +1,14 @@
 const fs = require('fs');
 const path = require('path');
 
-// URL base de tu GitHub Pages
 const repoBaseUrl = 'https://mquirosp.github.io/dev-mindmaps/';
 
-// Obtiene todos los archivos HTML del repositorio
+// Obtiene todos los archivos HTML del repositorio en la raíz
 const files = fs.readdirSync('.')
   .filter(f => f.endsWith('.html'))
   .sort();
+
+console.log("Archivos HTML encontrados:", files);
 
 // --- Generar index.html ---
 let indexContent = `<!DOCTYPE html>
@@ -43,7 +44,7 @@ indexContent += `  </ul>
 `;
 
 fs.writeFileSync('index.html', indexContent);
-console.log('index.html generado ✅');
+console.log("index.html generado en:", path.resolve('index.html'));
 
 // --- Generar README.md ---
 let readmeContent = `# Dev Mindmaps
@@ -62,4 +63,4 @@ files.forEach(file => {
 readmeContent += `\n---\n`;
 
 fs.writeFileSync('README.md', readmeContent);
-console.log('README.md actualizado ✅');
+console.log("README.md actualizado en:", path.resolve('README.md'));
