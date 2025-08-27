@@ -17,9 +17,6 @@ jobs:
         with:
           node-version: "20"
 
-      - name: Install dependencies
-        run: npm install
-
       - name: Generate index.html and README.md
         run: node generate-site.js
 
