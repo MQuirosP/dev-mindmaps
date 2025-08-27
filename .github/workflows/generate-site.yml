@@ -1,43 +1,41 @@
-name: Generate site
+name: Update Mindmaps
 
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   workflow_dispatch:
 
+permissions:
+  contents: write   # 🔑 Permite al bot hacer commits y push
+
 jobs:
-  generate:
+  build:
     runs-on: ubuntu-latest
+
     steps:
-      # 1️⃣ Clonar el repo
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      # 2️⃣ Configurar Node.js
-      - name: Setup Node.js
-        uses: actions/setup-node@v3
         with:
-          node-version: "20"
+          persist-credentials: true   # 👈 para usar GITHUB_TOKEN con push
 
-      # 3️⃣ Ejecutar script de generación
-      - name: Generate index.html and README.md
-        run: node generate-site.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
 
-      # 4️⃣ Mostrar archivos generados
-      - name: Show generated files
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate files
         run: |
-          echo "index.html exists?"
-          ls -l index.html || echo "Not found"
-          echo "README.md exists?"
-          ls -l README.md || echo "Not found"
+          npm run build:html   # o el script que genera index.html
+          npm run build:readme # o el que actualiza README.md
 
-      # 5️⃣ Commit y push usando GITHUB_TOKEN
       - name: Commit and push changes
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add index.html README.md
-          git commit -m "Update index.html and README.md automatically" || echo "Nothing to commit"
-          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git
+          git commit -m "Update index.html and README.md automatically" || echo "No changes to commit"
+          git push
