@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+.markmap-dark {
+  background: #27272a;
+  color: white;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:S,mm:Q}=window,$=new S.Toolbar;$.attach(Q);const I=$.render();I.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(I)})})()</script><script>((l,U,M,R)=>{const N=l();window.mm=N.Markmap.create("svg#mindmap",(U||N.deriveOptions)(R),M),window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.classList.add("markmap-dark")})(()=>window.markmap,null,{"content":"Desarrollo Backend - M&#xe1;s all&#xe1; del CRUD","children":[{"content":"Nivel 1 - Fortalecer lo b&#xe1;sico","children":[{"content":"Autenticaci&#xf3;n y autorizaci&#xf3;n","children":[{"content":"Login / Register","children":[],"payload":{"tag":"li","lines":"4,5"}},{"content":"Tokens JWT o sesiones","children":[],"payload":{"tag":"li","lines":"5,6"}},{"content":"Roles y protecci&#xf3;n de rutas","children":[],"payload":{"tag":"li","lines":"6,7"}}],"payload":{"tag":"li","lines":"3,7"}},{"content":"Validaciones","children":[{"content":"DTOs","children":[],"payload":{"tag":"li","lines":"8,9"}},{"content":"Middlewares","children":[],"payload":{"tag":"li","lines":"9,10"}}],"payload":{"tag":"li","lines":"7,10"}},{"content":"Paginaci&#xf3;n, filtros y ordenamiento","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"Subida y manejo de archivos","children":[{"content":"Im&#xe1;genes, PDF","children":[],"payload":{"tag":"li","lines":"12,13"}}],"payload":{"tag":"li","lines":"11,13"}},{"content":"Relaciones entre entidades","children":[{"content":"Ej: usuarios y posts","children":[],"payload":{"tag":"li","lines":"14,16"}}],"payload":{"tag":"li","lines":"13,16"}}],"payload":{"tag":"h2","lines":"2,3"}},{"content":"Nivel 2 - Retos reales de backend","children":[{"content":"Jobs / tareas programadas","children":[{"content":"node-cron, bull","children":[],"payload":{"tag":"li","lines":"18,19"}}],"payload":{"tag":"li","lines":"17,19"}},{"content":"Env&#xed;o de correos electr&#xf3;nicos","children":[],"payload":{"tag":"li","lines":"19,20"}},{"content":"Internacionalizaci&#xf3;n (i18n)","children":[],"payload":{"tag":"li","lines":"20,21"}},{"content":"Consumir APIs externas","children":[],"payload":{"tag":"li","lines":"21,22"}},{"content":"Exportar datos (Excel, PDF)","children":[],"payload":{"tag":"li","lines":"22,23"}},{"content":"Logs y m&#xe9;tricas","children":[{"content":"Winston, Pino","children":[],"payload":{"tag":"li","lines":"24,25"}},{"content":"Prometheus, Grafana","children":[],"payload":{"tag":"li","lines":"25,27"}}],"payload":{"tag":"li","lines":"23,27"}}],"payload":{"tag":"h2","lines":"16,17"}},{"content":"Nivel 3 - Arquitectura y escalabilidad","children":[{"content":"Separaci&#xf3;n por capas","children":[{"content":"Controladores","children":[],"payload":{"tag":"li","lines":"29,30"}},{"content":"Servicios","children":[],"payload":{"tag":"li","lines":"30,31"}},{"content":"Repositorios","children":[],"payload":{"tag":"li","lines":"31,32"}}],"payload":{"tag":"li","lines":"28,32"}},{"content":"Pruebas automatizadas","children":[{"content":"Unitarias e integraci&#xf3;n","children":[],"payload":{"tag":"li","lines":"33,34"}}],"payload":{"tag":"li","lines":"32,34"}},{"content":"WebSockets","children":[{"content":"Chats, notificaciones","children":[],"payload":{"tag":"li","lines":"35,36"}}],"payload":{"tag":"li","lines":"34,36"}},{"content":"Cach&#xe9; con Redis","children":[],"payload":{"tag":"li","lines":"36,37"}},{"content":"Control de concurrencia y transacciones","children":[],"payload":{"tag":"li","lines":"37,38"}},{"content":"Multi-tenancy","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"Despliegue real","children":[{"content":"Docker","children":[],"payload":{"tag":"li","lines":"40,41"}},{"content":"CI/CD","children":[],"payload":{"tag":"li","lines":"41,42"}},{"content":"Servidores (Vercel, AWS, etc.)","children":[],"payload":{"tag":"li","lines":"42,44"}}],"payload":{"tag":"li","lines":"39,44"}}],"payload":{"tag":"h2","lines":"27,28"}},{"content":"Proyectos sugeridos","children":[{"content":"Sistema de reservas","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"Chat en tiempo real","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"API para e-commerce","children":[],"payload":{"tag":"li","lines":"47,48"}},{"content":"Sistema de tickets","children":[],"payload":{"tag":"li","lines":"48,49"}},{"content":"Clon de Trello","children":[],"payload":{"tag":"li","lines":"49,50"}},{"content":"API de blog","children":[],"payload":{"tag":"li","lines":"50,51"}}],"payload":{"tag":"h2","lines":"44,45"}}],"payload":{"tag":"h1","lines":"0,1"}},null)</script>
+</body>
+</html>

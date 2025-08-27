@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+.markmap-dark {
+  background: #27272a;
+  color: white;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:S,mm:Q}=window,$=new S.Toolbar;$.attach(Q);const I=$.render();I.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(I)})})()</script><script>((l,U,M,R)=>{const N=l();window.mm=N.Markmap.create("svg#mindmap",(U||N.deriveOptions)(R),M),window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.classList.add("markmap-dark")})(()=>window.markmap,null,{"content":"Control de Acceso en Bases de Datos Relacionales","children":[{"content":"Fundamentos","children":[{"content":"Qu&#xe9; es el control de acceso","children":[{"content":"Seguridad de datos","children":[],"payload":{"tag":"li","lines":"4,5"}},{"content":"Separaci&#xf3;n de responsabilidades","children":[],"payload":{"tag":"li","lines":"5,6"}}],"payload":{"tag":"li","lines":"3,6"}},{"content":"Roles vs Usuarios","children":[{"content":"Usuario = rol con LOGIN","children":[],"payload":{"tag":"li","lines":"7,8"}},{"content":"Rol = conjunto de privilegios","children":[],"payload":{"tag":"li","lines":"8,9"}}],"payload":{"tag":"li","lines":"6,9"}},{"content":"Principales comandos","children":[{"content":"GRANT","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"REVOKE","children":[],"payload":{"tag":"li","lines":"11,12"}},{"content":"CREATE ROLE / CREATE USER","children":[],"payload":{"tag":"li","lines":"12,14"}}],"payload":{"tag":"li","lines":"9,14"}}],"payload":{"tag":"h2","lines":"2,3"}},{"content":"Permisos por tipo de objeto","children":[{"content":"Tabla","children":[{"content":"SELECT","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"INSERT","children":[],"payload":{"tag":"li","lines":"17,18"}},{"content":"UPDATE","children":[],"payload":{"tag":"li","lines":"18,19"}},{"content":"DELETE","children":[],"payload":{"tag":"li","lines":"19,20"}}],"payload":{"tag":"li","lines":"15,20"}},{"content":"Esquema","children":[{"content":"USAGE","children":[],"payload":{"tag":"li","lines":"21,22"}},{"content":"CREATE","children":[],"payload":{"tag":"li","lines":"22,23"}}],"payload":{"tag":"li","lines":"20,23"}},{"content":"Funciones","children":[{"content":"EXECUTE","children":[],"payload":{"tag":"li","lines":"24,25"}}],"payload":{"tag":"li","lines":"23,25"}},{"content":"Secuencias","children":[{"content":"USAGE, SELECT, UPDATE","children":[],"payload":{"tag":"li","lines":"26,28"}}],"payload":{"tag":"li","lines":"25,28"}}],"payload":{"tag":"h2","lines":"14,15"}},{"content":"Gesti&#xf3;n de Roles","children":[{"content":"Crear roles por funcionalidad","children":[{"content":"solo_lectura","children":[],"payload":{"tag":"li","lines":"30,31"}},{"content":"lectura_escritura","children":[],"payload":{"tag":"li","lines":"31,32"}},{"content":"administrador","children":[],"payload":{"tag":"li","lines":"32,33"}}],"payload":{"tag":"li","lines":"29,33"}},{"content":"Asignaci&#xf3;n de roles a usuarios","children":[],"payload":{"tag":"li","lines":"33,34"}},{"content":"Herencia de roles","children":[],"payload":{"tag":"li","lines":"34,36"}}],"payload":{"tag":"h2","lines":"28,29"}},{"content":"Control de Acceso a Esquemas","children":[{"content":"Esquema <code>public</code>","children":[{"content":"Acceso por defecto","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"C&#xf3;mo revocar permisos","children":[],"payload":{"tag":"li","lines":"39,40"}}],"payload":{"tag":"li","lines":"37,40"}},{"content":"Crear esquemas privados","children":[],"payload":{"tag":"li","lines":"40,41"}},{"content":"Asignar permisos espec&#xed;ficos a esquemas","children":[],"payload":{"tag":"li","lines":"41,43"}}],"payload":{"tag":"h2","lines":"36,37"}},{"content":"Buenas pr&#xe1;cticas","children":[{"content":"No usar superusuario para tareas comunes","children":[],"payload":{"tag":"li","lines":"44,45"}},{"content":"Evitar GRANT a PUBLIC","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"Usar roles intermedios","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"Documentar permisos","children":[],"payload":{"tag":"li","lines":"47,49"}}],"payload":{"tag":"h2","lines":"43,44"}},{"content":"Seguridad Avanzada","children":[{"content":"Row Level Security (RLS)","children":[{"content":"Habilitar pol&#xed;ticas por usuario","children":[],"payload":{"tag":"li","lines":"51,52"}},{"content":"Pol&#xed;tica <code>USING</code>","children":[],"payload":{"tag":"li","lines":"52,53"}}],"payload":{"tag":"li","lines":"50,53"}},{"content":"Auditor&#xed;a","children":[{"content":"pgAudit","children":[],"payload":{"tag":"li","lines":"54,55"}},{"content":"Triggers y logs","children":[],"payload":{"tag":"li","lines":"55,57"}}],"payload":{"tag":"li","lines":"53,57"}}],"payload":{"tag":"h2","lines":"49,50"}},{"content":"Herramientas y consultas &#xfa;tiles","children":[{"content":"<code>\\du</code> &#x2192; Ver roles en psql","children":[],"payload":{"tag":"li","lines":"58,59"}},{"content":"<code>\\dp</code> &#x2192; Ver permisos de tablas","children":[],"payload":{"tag":"li","lines":"59,60"}},{"content":"pgAdmin &#x2192; Interfaz gr&#xe1;fica para permisos","children":[],"payload":{"tag":"li","lines":"60,61"}},{"content":"<code>information_schema.role_table_grants</code>","children":[],"payload":{"tag":"li","lines":"61,63"}}],"payload":{"tag":"h2","lines":"57,58"}},{"content":"Ejercicios recomendados","children":[{"content":"Crear usuarios con permisos diferenciados","children":[],"payload":{"tag":"li","lines":"64,65"}},{"content":"Implementar un esquema privado y controlar acceso","children":[],"payload":{"tag":"li","lines":"65,66"}},{"content":"Aplicar RLS sobre una tabla multiusuario","children":[],"payload":{"tag":"li","lines":"66,67"}}],"payload":{"tag":"h2","lines":"63,64"}}],"payload":{"tag":"h1","lines":"0,1"}},null)</script>
+</body>
+</html>

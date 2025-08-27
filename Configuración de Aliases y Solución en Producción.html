@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+.markmap-dark {
+  background: #27272a;
+  color: white;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:S,mm:Q}=window,$=new S.Toolbar;$.attach(Q);const I=$.render();I.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(I)})})()</script><script>((l,U,M,R)=>{const N=l();window.mm=N.Markmap.create("svg#mindmap",(U||N.deriveOptions)(R),M),window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.classList.add("markmap-dark")})(()=>window.markmap,null,{"content":"Configuraci&#xf3;n de Aliases y Soluci&#xf3;n en Producci&#xf3;n","children":[{"content":"Objetivo","children":[{"content":"Usar alias (<code>@/</code>) para imports legibles","children":[],"payload":{"tag":"li","lines":"4,5"}},{"content":"Evitar errores en producci&#xf3;n tras <code>tsc</code>","children":[],"payload":{"tag":"li","lines":"5,7"}}],"payload":{"tag":"h2","lines":"2,3"}},{"content":"Alias en TypeScript","children":[{"content":"tsconfig.json","children":[{"content":"<pre data-lines=\"13,19\"><code class=\"language-bash\">  <span class=\"hljs-string\">&quot;baseUrl&quot;</span>: <span class=\"hljs-string\">&quot;./src&quot;</span>,\n  <span class=\"hljs-string\">&quot;paths&quot;</span>: {\n    <span class=\"hljs-string\">&quot;@/*&quot;</span>: [<span class=\"hljs-string\">&quot;*&quot;</span>]\n  }\n</code></pre>","children":[],"payload":{"tag":"pre","lines":"13,19"}}],"payload":{"tag":"h3","lines":"9,10"}},{"content":"Uso","children":[{"content":"<pre data-lines=\"24,27\"><code class=\"language-bash\">import { createInvoiceSchema } from <span class=\"hljs-string\">&quot;@/modules/invoices&quot;</span>;\n</code></pre>","children":[],"payload":{"tag":"pre","lines":"24,27"}}],"payload":{"tag":"h3","lines":"20,21"}}],"payload":{"tag":"h2","lines":"7,8"}},{"content":"Problemas en Producci&#xf3;n","children":[{"content":"Al compilar con <code>tsc</code>","children":[{"content":"Error: Cannot find module &apos;@/config/prisma&apos;","children":[],"payload":{"tag":"li","lines":"34,35"}},{"content":"Motivo: Node no entiende los alias tras compilar a <code>.js</code>","children":[],"payload":{"tag":"li","lines":"35,37"}}],"payload":{"tag":"h3","lines":"32,33"}}],"payload":{"tag":"h2","lines":"30,31"}},{"content":"Soluciones","children":[{"content":"Opci&#xf3;n A (Aplicada) &#x2705;","children":[{"content":"Eliminar alias al compilar (recomendado para producci&#xf3;n)","children":[{"content":"En <code>tsconfig.json</code> mantenemos los alias para desarrollo","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"Usamos <code>tsc-alias</code> para reemplazarlos en <code>dist/</code>","children":[],"payload":{"tag":"li","lines":"46,48"}}],"payload":{"tag":"h4","lines":"43,44"}},{"content":"package.json","children":[{"content":"<pre data-lines=\"50,56\"><code class=\"language-bash\"><span class=\"hljs-string\">&quot;scripts&quot;</span>: {\n  <span class=\"hljs-string\">&quot;build&quot;</span>: <span class=\"hljs-string\">&quot;tsc --project tsconfig.json &amp;&amp; tsc-alias&quot;</span>,\n  <span class=\"hljs-string\">&quot;start&quot;</span>: <span class=\"hljs-string\">&quot;node dist/server.js&quot;</span>\n}\n</code></pre>","children":[],"payload":{"tag":"pre","lines":"50,56"}}],"payload":{"tag":"h4","lines":"48,49"}}],"payload":{"tag":"h3","lines":"41,42"}},{"content":"Opci&#xf3;n B (NO aplicada)","children":[{"content":"Configurar alias en tiempo de ejecuci&#xf3;n usando <code>module-alias</code> o <code>babel</code>","children":[],"payload":{"tag":"li","lines":"59,60"}},{"content":"M&#xe1;s compleja y pesada para producci&#xf3;n","children":[],"payload":{"tag":"li","lines":"60,62"}}],"payload":{"tag":"h3","lines":"57,58"}}],"payload":{"tag":"h2","lines":"39,40"}},{"content":"Archivos <code>index.ts</code>","children":[{"content":"&#xbf;Para qu&#xe9; sirven?","children":[{"content":"Reexportan m&#xf3;dulos","children":[],"payload":{"tag":"li","lines":"68,69"}},{"content":"Simplifican imports","children":[],"payload":{"tag":"li","lines":"69,71"}}],"payload":{"tag":"h3","lines":"66,67"}},{"content":"Ejemplo","children":[{"content":"<pre data-lines=\"75,81\"><code class=\"language-bash\"><span class=\"hljs-built_in\">export</span> * from <span class=\"hljs-string\">&apos;./invoice.controller&apos;</span>;\n<span class=\"hljs-built_in\">export</span> * from <span class=\"hljs-string\">&apos;./invoice.routes&apos;</span>;\n<span class=\"hljs-built_in\">export</span> * from <span class=\"hljs-string\">&apos;./invoice.schema&apos;</span>;\n<span class=\"hljs-built_in\">export</span> * from <span class=\"hljs-string\">&apos;./invoice.service&apos;</span>;\n</code></pre>","children":[],"payload":{"tag":"pre","lines":"75,81"}},{"content":"<pre data-lines=\"84,87\"><code class=\"language-ts\"><span class=\"hljs-keyword\">import</span> { createInvoiceSchema } <span class=\"hljs-keyword\">from</span> <span class=\"hljs-string\">&quot;@/modules/invoices&quot;</span>;\n</code></pre>","children":[],"payload":{"tag":"pre","lines":"84,87"}}],"payload":{"tag":"h3","lines":"71,72"}}],"payload":{"tag":"h2","lines":"64,65"}},{"content":"Resultado Final","children":[{"content":"&#x2705; Desarrollo con alias: claro y limpio","children":[],"payload":{"tag":"li","lines":"92,93"}},{"content":"&#x2705; Producci&#xf3;n sin errores: <code>tsc-alias</code> reemplaza correctamente","children":[],"payload":{"tag":"li","lines":"93,94"}},{"content":"&#x2705; C&#xf3;digo modular y organizado con <code>index.ts</code>","children":[],"payload":{"tag":"li","lines":"94,95"}}],"payload":{"tag":"h2","lines":"90,91"}}],"payload":{"tag":"h1","lines":"0,1"}},null)</script>
+</body>
+</html>

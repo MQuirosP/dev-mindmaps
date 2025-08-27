@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.1-alpha.4/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.1-alpha.4/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.1-alpha.4/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:q,mm:v}=window,j=new q.Toolbar;j.attach(v);const we=j.render();we.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(we)})})()</script><script>((f,d,h,u)=>{const g=f();window.mm=g.Markmap.create("svg#mindmap",(d||g.deriveOptions)(u),h)})(()=>window.markmap,null,{"content":"Frontend","children":[{"content":"Arquitectura de componentes","children":[{"content":"UI dividida en componentes reutilizables","children":[],"payload":{"lines":"3,4"}},{"content":"Cada componente maneja su lógica y estilos","children":[],"payload":{"lines":"4,6"}}],"payload":{"lines":"2,3"}},{"content":"Diseño responsivo","children":[{"content":"Adaptable a distintos tamaños de pantalla","children":[],"payload":{"lines":"7,8"}},{"content":"<strong>Media queries</strong>, <strong>Grid Systems</strong> (Bootstrap, Material UI)","children":[],"payload":{"lines":"8,10"}}],"payload":{"lines":"6,7"}},{"content":"Manejo del estado","children":[{"content":"Herramientas para gestionar el estado:","children":[{"content":"<strong>Redux</strong>","children":[],"payload":{"lines":"12,13"}},{"content":"<strong>NgRx</strong>","children":[],"payload":{"lines":"13,14"}},{"content":"<strong>Context API</strong> (React)","children":[],"payload":{"lines":"14,16"}}],"payload":{"lines":"11,16"}}],"payload":{"lines":"10,11"}},{"content":"Acceso a la API","children":[{"content":"<strong>HTTP</strong> o <strong>WebSockets</strong>","children":[],"payload":{"lines":"17,18"}},{"content":"Manejo de respuestas y errores","children":[],"payload":{"lines":"18,19"}},{"content":"Uso de <strong>promesas</strong>, <strong>async/await</strong>, <strong>observables</strong>","children":[],"payload":{"lines":"19,21"}}],"payload":{"lines":"16,17"}},{"content":"Seguridad del frontend","children":[{"content":"Protección contra <strong>XSS</strong> y <strong>CSRF</strong>","children":[],"payload":{"lines":"22,23"}},{"content":"Uso de <strong>HTTPS</strong> para las comunicaciones","children":[],"payload":{"lines":"23,24"}},{"content":"Validación de entradas antes de enviar datos al backend","children":[],"payload":{"lines":"24,26"}}],"payload":{"lines":"21,22"}},{"content":"Rendimiento","children":[{"content":"<strong>Lazy loading</strong> y <strong>code splitting</strong>","children":[],"payload":{"lines":"27,28"}},{"content":"Optimización de imágenes y recursos estáticos","children":[],"payload":{"lines":"28,29"}},{"content":"Herramientas como <strong>Webpack</strong>","children":[],"payload":{"lines":"29,31"}}],"payload":{"lines":"26,27"}},{"content":"Manejo de enrutamiento","children":[{"content":"Navegación eficiente entre páginas","children":[],"payload":{"lines":"32,33"}},{"content":"Uso de <strong>React Router</strong> o <strong>Angular Router</strong>","children":[],"payload":{"lines":"33,35"}}],"payload":{"lines":"31,32"}},{"content":"Accesibilidad","children":[{"content":"Uso de etiquetas semánticas en HTML","children":[],"payload":{"lines":"36,37"}},{"content":"Asegurar accesibilidad para personas con discapacidades","children":[],"payload":{"lines":"37,39"}}],"payload":{"lines":"35,36"}},{"content":"Pruebas","children":[{"content":"<strong>Pruebas unitarias</strong> con <strong>Jest</strong>","children":[],"payload":{"lines":"40,41"}},{"content":"<strong>Pruebas end-to-end</strong> (E2E) con <strong>Cypress</strong> o <strong>Protractor</strong>","children":[],"payload":{"lines":"41,43"}}],"payload":{"lines":"39,40"}},{"content":"SEO","children":[{"content":"<strong>SSR</strong> o <strong>SWR</strong> para mejorar indexación","children":[],"payload":{"lines":"44,45"}},{"content":"Optimización para motores de búsqueda","children":[],"payload":{"lines":"45,46"}}],"payload":{"lines":"43,44"}}],"payload":{"lines":"0,1"}},null)</script>
+</body>
+</html>

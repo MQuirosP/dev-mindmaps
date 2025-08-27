@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.8.5/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.17.0/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.17.0/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:q,mm:v}=window,j=new q.Toolbar;j.attach(v);const we=j.render();we.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(we)})})()</script><script>((f,d,h,u)=>{const g=f();window.mm=g.Markmap.create("svg#mindmap",(d||g.deriveOptions)(u),h)})(()=>window.markmap,null,{"content":"Explicación del Código","children":[{"content":"1. <code>import \"reflect-metadata\";</code>","children":[{"content":"Importa <code>reflect-metadata</code>","children":[],"payload":{"lines":"3,4"}},{"content":"Necesario para decoradores en TypeScript","children":[],"payload":{"lines":"4,5"}},{"content":"Usado por TypeORM","children":[],"payload":{"lines":"5,7"}}],"payload":{"lines":"2,3"}},{"content":"2. <code>import express from \"express\";</code>","children":[{"content":"Importa <code>express</code>","children":[],"payload":{"lines":"8,9"}},{"content":"Framework para crear servidores web","children":[],"payload":{"lines":"9,11"}}],"payload":{"lines":"7,8"}},{"content":"3. <code>import dotenv from \"dotenv\";</code>","children":[{"content":"Importa <code>dotenv</code>","children":[],"payload":{"lines":"12,13"}},{"content":"Carga variables de entorno desde archivo <code>.env</code>","children":[],"payload":{"lines":"13,15"}}],"payload":{"lines":"11,12"}},{"content":"4. <code>import dataSource from \"./ormconfig\";</code>","children":[{"content":"Importa configuración de TypeORM desde <code>ormconfig</code>","children":[],"payload":{"lines":"16,17"}},{"content":"Contiene detalles de conexión y opciones","children":[],"payload":{"lines":"17,19"}}],"payload":{"lines":"15,16"}},{"content":"5. <code>dotenv.config();</code>","children":[{"content":"Carga variables de entorno a <code>process.env</code>","children":[],"payload":{"lines":"20,21"}},{"content":"Debe ejecutarse al inicio","children":[],"payload":{"lines":"21,23"}}],"payload":{"lines":"19,20"}},{"content":"6. <code>const app = express();</code>","children":[{"content":"Crea instancia de Express","children":[],"payload":{"lines":"24,25"}},{"content":"Objeto principal para definir rutas y middleware","children":[],"payload":{"lines":"25,27"}}],"payload":{"lines":"23,24"}},{"content":"7. <code>const PORT = process.env.APP_PORT || 3000;</code>","children":[{"content":"Define el puerto para el servidor","children":[],"payload":{"lines":"28,29"}},{"content":"Usa <code>APP_PORT</code> de variables de entorno o <code>3000</code> por defecto","children":[],"payload":{"lines":"29,31"}}],"payload":{"lines":"27,28"}},{"content":"8. <code>dataSource.initialize().then(() =&gt; { ... }).catch(error =&gt; { ... });</code>","children":[{"content":"\n<p data-lines=\"32,33\">Inicializa la conexión a la base de datos</p>\n<h3 data-lines=\"34,35\"><strong>Éxito (<code>.then(() =&gt; { ... })</code></strong></h3>","children":[{"content":"","children":[{"content":"<code>console.log(\"Connected to the database!\");</code>","children":[{"content":"Imprime mensaje de éxito","children":[],"payload":{"lines":"36,37"}}],"payload":{"lines":"35,37"}},{"content":"<code>app.get(\"/\", (req, res) =&gt; { res.send(\"Hello World!\"); });</code>","children":[{"content":"Define ruta GET <code>/</code>","children":[],"payload":{"lines":"38,39"}},{"content":"Responde con \"Hello World!\"","children":[],"payload":{"lines":"39,40"}}],"payload":{"lines":"37,40"}},{"content":"<code>app.listen(PORT, () =&gt; { console.log(</code>Server running at PORT: ${PORT}<code>); });</code>","children":[{"content":"Inicia servidor en el puerto definido","children":[],"payload":{"lines":"41,42"}},{"content":"Imprime mensaje de inicio","children":[],"payload":{"lines":"42,44"}}],"payload":{"lines":"40,44"}}],"payload":{"lines":"35,44"}},{"content":"<code>console.error(\"Error connecting to the database:\", error);</code>","children":[{"content":"Imprime mensaje de error","children":[],"payload":{"lines":"46,47"}},{"content":"Muestra detalles del error","children":[],"payload":{"lines":"47,48"}}],"payload":{"lines":"45,48"}}],"payload":{"lines":"32,48"}}],"payload":{"lines":"31,32"}}],"payload":{"lines":"0,1"}},null)</script>
+</body>
+</html>

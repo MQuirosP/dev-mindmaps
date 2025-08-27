@@ -1,0 +1,33 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+<title>Markmap</title>
+<style>
+* {
+  margin: 0;
+  padding: 0;
+}
+html {
+  font-family: ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+#mindmap {
+  display: block;
+  width: 100vw;
+  height: 100vh;
+}
+.markmap-dark {
+  background: #27272a;
+  color: white;
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/style.css">
+</head>
+<body>
+<svg id="mindmap"></svg>
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-view@0.18.12/dist/browser/index.js"></script><script src="https://cdn.jsdelivr.net/npm/markmap-toolbar@0.18.12/dist/index.js"></script><script>(()=>{setTimeout(()=>{const{markmap:S,mm:Q}=window,$=new S.Toolbar;$.attach(Q);const I=$.render();I.setAttribute("style","position:absolute;bottom:20px;right:20px"),document.body.append(I)})})()</script><script>((l,U,M,R)=>{const N=l();window.mm=N.Markmap.create("svg#mindmap",(U||N.deriveOptions)(R),M),window.matchMedia("(prefers-color-scheme: dark)").matches&&document.documentElement.classList.add("markmap-dark")})(()=>window.markmap,null,{"content":"Proyecto POS System Backend","children":[{"content":"Configuraci&#xf3;n y Setup","children":[{"content":"Configuraci&#xf3;n de tsconfig.json","children":[{"content":"Paths para alias","children":[],"payload":{"tag":"li","lines":"4,5"}}],"payload":{"tag":"li","lines":"3,5"}},{"content":"Configuraci&#xf3;n de jest.config.ts","children":[{"content":"moduleNameMapper correcto con rutas a /src/...","children":[],"payload":{"tag":"li","lines":"6,7"}}],"payload":{"tag":"li","lines":"5,7"}},{"content":"Soluci&#xf3;n de errores de m&#xf3;dulos","children":[{"content":"@entities, @decorators, @dtos, etc.","children":[],"payload":{"tag":"li","lines":"8,10"}}],"payload":{"tag":"li","lines":"7,10"}}],"payload":{"tag":"h2","lines":"2,3"}},{"content":"Entidades (Entity)","children":[{"content":"Product Entity","children":[{"content":"Campos: product_id, int_code, name, description, purchase_price, quantity, sale_price, is_taxed, margin, tax_percentage, category_id, created_at, updated_at","children":[],"payload":{"tag":"li","lines":"12,13"}},{"content":"Relaciones: OneToMany, ManyToOne con Category","children":[],"payload":{"tag":"li","lines":"13,14"}},{"content":"M&#xe9;todos: fieldsToLowerCase(), fieldsToCapitalize(), @AfterInsert loadCategoryName()","children":[],"payload":{"tag":"li","lines":"14,15"}}],"payload":{"tag":"li","lines":"11,15"}},{"content":"Users Entity","children":[{"content":"Campos: user_id, username, email, password, role, is_active, name, lastname, created_at, updated_at","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"M&#xe9;todos: hashPassword(), fieldsToLowerCase(), fieldsToCapitalize()","children":[],"payload":{"tag":"li","lines":"17,19"}}],"payload":{"tag":"li","lines":"15,19"}}],"payload":{"tag":"h2","lines":"10,11"}},{"content":"Controladores (Controllers)","children":[{"content":"Uso de m&#xe9;todo auxiliar <code>handleControllerOperation</code> para manejar async/await y errores","children":[],"payload":{"tag":"li","lines":"20,21"}},{"content":"M&#xe9;todos as&#xed;ncronos para CRUD","children":[{"content":"createUser, getUsers, getUserById, updateUser, deleteUser, comparePassword (ejemplo UserController)","children":[],"payload":{"tag":"li","lines":"22,23"}},{"content":"createProduct, getProducts, getProductById, updateProduct (ejemplo ProductController)","children":[],"payload":{"tag":"li","lines":"23,24"}}],"payload":{"tag":"li","lines":"21,24"}},{"content":"Manejo centralizado de errores con try/catch y next()","children":[],"payload":{"tag":"li","lines":"24,26"}}],"payload":{"tag":"h2","lines":"19,20"}},{"content":"Servicios (Services)","children":[{"content":"Servicios con m&#xe9;todos para CRUD usando repositorios de TypeORM","children":[],"payload":{"tag":"li","lines":"27,28"}},{"content":"M&#xe9;todos simulados para pruebas unitarias","children":[],"payload":{"tag":"li","lines":"28,30"}}],"payload":{"tag":"h2","lines":"26,27"}},{"content":"Pruebas Unitarias (Tests)","children":[{"content":"Tests para servicios con mocks de repositorios","children":[],"payload":{"tag":"li","lines":"31,32"}},{"content":"Tests para controladores con mocks de servicios","children":[],"payload":{"tag":"li","lines":"32,33"}},{"content":"Uso de objetos completos para mocks seg&#xfa;n entidad para evitar errores de tipo","children":[],"payload":{"tag":"li","lines":"33,34"}},{"content":"Verificaci&#xf3;n de llamadas a m&#xe9;todos y respuestas con DTOs","children":[],"payload":{"tag":"li","lines":"34,35"}},{"content":"Tests que validan manejo correcto de errores (rejections y llamadas a next())","children":[],"payload":{"tag":"li","lines":"35,37"}}],"payload":{"tag":"h2","lines":"30,31"}},{"content":"Problemas y soluciones","children":[{"content":"Error de m&#xf3;dulos en jest =&gt; ajustar moduleNameMapper","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"Error de asignaci&#xf3;n de tipo en tests =&gt; usar mocks con todos los campos de la entidad","children":[],"payload":{"tag":"li","lines":"39,40"}},{"content":"Falta de async/await en controladores =&gt; usar m&#xe9;todo handleControllerOperation","children":[],"payload":{"tag":"li","lines":"40,41"}},{"content":"Implementaci&#xf3;n correcta de DTOs en responses","children":[],"payload":{"tag":"li","lines":"41,43"}}],"payload":{"tag":"h2","lines":"37,38"}},{"content":"Buenas pr&#xe1;cticas adoptadas","children":[{"content":"Centralizar manejo de errores en controlador","children":[],"payload":{"tag":"li","lines":"44,45"}},{"content":"Usar DTOs para formatear respuestas","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"Usar mocks completos y realistas para pruebas","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"Configurar Jest y TypeScript para soportar alias y m&#xf3;dulos","children":[],"payload":{"tag":"li","lines":"47,49"}}],"payload":{"tag":"h2","lines":"43,44"}}],"payload":{"tag":"h1","lines":"0,1"}},null)</script>
+</body>
+</html>
