@@ -1,19 +1,30 @@
-name: Generate Mindmaps Index
+name: Update README and Index
 
 on:
   push:
     paths:
       - '**/*.html'
+      - 'Generate-readme.js'
   workflow_dispatch:
 
 jobs:
-  generate-index:
+  generate-readme-index:
     runs-on: ubuntu-latest
     steps:
       # 1️⃣ Clonar el repo
       - uses: actions/checkout@v3
 
-      # 2️⃣ Generar index.html con URLs completas
+      # 2️⃣ Setup Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # 3️⃣ Generar README.md
+      - name: Generate README.md
+        run: node Generate-readme.js
+
+      # 4️⃣ Generar index.html para GitHub Pages
       - name: Generate index.html
         run: |
           BASE_URL="https://mquirosp.github.io/dev-mindmaps/"
@@ -31,7 +42,6 @@ jobs:
           </head>" >> index.html
           echo "<body><h1>Dev Mindmaps</h1><ul>" >> index.html
 
-          # Recorrer todos los HTML del repo (excepto index.html)
           find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
             file_path=$(echo "$file" | sed 's|^\./||' | jq -sRr @uri)
             name=$(basename "$file" .html)
@@ -40,10 +50,10 @@ jobs:
 
           echo "</ul></body></html>" >> index.html
 
-      # 3️⃣ Commit y push usando PAT
-      - name: Commit and push index.html
+      # 5️⃣ Commit y push de README.md y index.html
+      - name: Commit and push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
           github_token: ${{ secrets.PERSONAL_TOKEN }}
           branch: main
-          commit_message: "docs: update index.html with full GitHub Pages URLs"
+          commit_message: "docs: update README.md and index.html with mindmap links"
