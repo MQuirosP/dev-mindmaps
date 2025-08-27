@@ -19,19 +19,11 @@ jobs:
         with:
           node-version: "20"
 
-      # 3️⃣ Listar archivos antes de generar
-      - name: List files before generating
-        run: ls -R
-
-      # 4️⃣ Ejecutar script de generación
+      # 3️⃣ Ejecutar script de generación
       - name: Generate index.html and README.md
         run: node generate-site.js
 
-      # 5️⃣ Listar archivos después de generar
-      - name: List files after generating
-        run: ls -R
-
-      # 6️⃣ Verificar que se crearon los archivos
+      # 4️⃣ Verificar archivos generados
       - name: Show generated files
         run: |
           echo "index.html exists?"
@@ -39,7 +31,7 @@ jobs:
           echo "README.md exists?"
           ls -l README.md || echo "Not found"
 
-      # 7️⃣ Commit y push usando GITHUB_TOKEN para evitar 403
+      # 5️⃣ Commit y push usando GITHUB_TOKEN
       - name: Commit and push changes
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
