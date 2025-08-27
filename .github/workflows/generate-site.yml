@@ -48,3 +48,4 @@ jobs:
           message: "Update index.html and README.md automatically"
           add: "index.html,README.md"
           push: true
+          allow_empty_commit: true
