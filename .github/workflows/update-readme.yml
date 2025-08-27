@@ -10,14 +10,28 @@ jobs:
   generate-index:
     runs-on: ubuntu-latest
     steps:
+      # 1️⃣ Clonar el repo
       - uses: actions/checkout@v3
 
-      - name: Generate index.html with full URLs
+      # 2️⃣ Generar index.html con URLs completas
+      - name: Generate index.html
         run: |
           BASE_URL="https://mquirosp.github.io/dev-mindmaps/"
           echo "<!DOCTYPE html>" > index.html
-          echo "<html lang='es'><head><meta charset='UTF-8'><title>Dev Mindmaps</title></head><body><h1>Dev Mindmaps</h1><ul>" >> index.html
+          echo "<html lang='es'>" >> index.html
+          echo "<head><meta charset='UTF-8'><title>Dev Mindmaps</title>
+          <style>
+            body { font-family: Arial, sans-serif; margin: 2rem; }
+            h1 { color: #2c3e50; }
+            ul { list-style: none; padding-left: 0; }
+            li { margin-bottom: 0.5rem; }
+            a { text-decoration: none; color: #3498db; }
+            a:hover { text-decoration: underline; }
+          </style>
+          </head>" >> index.html
+          echo "<body><h1>Dev Mindmaps</h1><ul>" >> index.html
 
+          # Recorrer todos los HTML del repo (excepto index.html)
           find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
             file_path=$(echo "$file" | sed 's|^\./||' | jq -sRr @uri)
             name=$(basename "$file" .html)
@@ -26,6 +40,7 @@ jobs:
 
           echo "</ul></body></html>" >> index.html
 
+      # 3️⃣ Commit y push usando PAT
       - name: Commit and push index.html
         uses: ad-m/github-push-action@v0.6.0
         with:
