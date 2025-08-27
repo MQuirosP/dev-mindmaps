@@ -1,39 +1,32 @@
 # Dev Mindmaps
 
-A collection of mind maps covering key concepts in **web development**, both **frontend** and **backend**.  
-These visual diagrams are designed to organize and simplify complex topics, making them easier to study, review, and connect.
+![DeepWiki](https://deepwiki.com/badge.svg)
 
-## 📂 Contents
-- **Frontend**
-  - HTML, CSS, JavaScript
-  - Frameworks & Libraries (React, Vue, etc.)
-  - UI/UX Concepts
-- **Backend**
-  - Node.js & Express
-  - Databases (SQL & NoSQL)
-  - APIs & Authentication
-- **General Development**
-  - Git & GitHub
-  - Software Architecture
-  - DevOps & Deployment
+Mind maps for frontend and backend development concepts.  
+All mind maps are created with [Markmap](https://markmap.js.org/).
 
-## 🎯 Purpose
-The goal of this repository is to:
-- Provide quick references for students and developers.
-- Offer a **visual learning resource** to reinforce theoretical concepts.
-- Serve as a **knowledge base** that grows over time.
+---
 
-## 📖 How to Use
-1. Browse the folders to find the topic of interest.  
-2. Open the mind map file (`.png`, `.pdf`, or source format).  
-3. Explore the connections and expand your understanding.
+## 🌐 Access the Mindmaps
 
-## 🤝 Contributing
-If you'd like to contribute:
-1. Fork this repository.  
-2. Add or improve a mind map.  
-3. Open a Pull Request.  
+All mind maps are listed dynamically on GitHub Pages:
 
-## 📜 License
-This project is licensed under the [MIT License](LICENSE).  
-Feel free to use, adapt, and share the maps.
+[📂 Open Mindmaps Index](https://mquirosp.github.io/dev-mindmaps/index.html)
+
+> This page always shows the latest maps available in the repository.
+
+---
+
+## 📝 About
+
+- The mind maps cover topics from **frontend** (HTML, CSS, JavaScript, React, etc.)  
+  and **backend** (Node.js, Express, Databases, APIs, etc.).
+- Files are stored in HTML format and served via GitHub Pages.
+- The `index.html` is automatically updated with any new map added to the repository.
+
+---
+
+## 📦 Usage
+
+- Click any link on the index page to open the corresponding mind map.  
+- You can download or view them directly in your browser.
