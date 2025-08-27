@@ -10,49 +10,33 @@ jobs:
   generate-index:
     runs-on: ubuntu-latest
     steps:
-      # 1️⃣ Clonar repo
       - uses: actions/checkout@v3
 
-      # 2️⃣ Renombrar archivos .html a nombres seguros
-      - name: Rename HTML files
+      - name: Rename HTML files safely
         run: |
-          find . -name '*.html' ! -name 'index.html' | while read file; do
+          find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
             dir=$(dirname "$file")
             base=$(basename "$file" .html)
-            # Minúsculas, reemplazar espacios por guiones, quitar caracteres no alfanuméricos salvo guion
+            # Minúsculas, reemplazar espacios por guiones, quitar caracteres problemáticos
             safe=$(echo "$base" | tr '[:upper:]' '[:lower:]' | sed 's/ /-/g' | sed 's/[^a-z0-9\-]//g')
             if [ "$base" != "$safe" ]; then
               mv "$file" "$dir/$safe.html"
             fi
           done
 
-      # 3️⃣ Generar index.html con enlaces
-      - name: Generate index.html
+      - name: Generate index.html safely
         run: |
           echo "<!DOCTYPE html>" > index.html
-          echo "<html lang='es'>" >> index.html
-          echo "<head><meta charset='UTF-8'><title>Dev Mindmaps</title>" >> index.html
-          echo "<style>
-          body { font-family: Arial, sans-serif; margin: 2rem; }
-          h1 { color: #2c3e50; }
-          ul { list-style: none; padding-left: 0; }
-          li { margin-bottom: 0.5rem; }
-          a { text-decoration: none; color: #3498db; }
-          a:hover { text-decoration: underline; }
-          </style></head>" >> index.html
-          echo "<body><h1>Dev Mindmaps</h1>" >> index.html
-          echo "<p>Mapas mentales para conceptos de desarrollo frontend y backend.</p>" >> index.html
-          echo "<ul>" >> index.html
+          echo "<html lang='es'><head><meta charset='UTF-8'><title>Dev Mindmaps</title></head><body><h1>Dev Mindmaps</h1><ul>" >> index.html
 
-          find . -name '*.html' ! -name 'index.html' | sort | while read file; do
-            url=$(echo "$file" | sed 's|^\./||')
+          find . -type f -name '*.html' ! -name 'index.html' -print0 | while IFS= read -r -d '' file; do
+            url=$(echo "$file" | sed 's|^\./||' | jq -sRr @uri)
             name=$(basename "$file" .html)
             echo "<li><a href='${url}'>${name}</a></li>" >> index.html
           done
 
           echo "</ul></body></html>" >> index.html
 
-      # 4️⃣ Commit y push usando PAT
       - name: Commit and push changes
         uses: ad-m/github-push-action@v0.6.0
         with:
